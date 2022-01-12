@@ -5,14 +5,11 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart' show CupertinoTheme, CupertinoApp;
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' show Colors, MaterialLocalizations, Theme, debugCheckHasMaterialLocalizations;
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../modal_bottom_sheet.dart';
-import '../bottom_sheet_route.dart';
 
 const double _kPreviousPageVisibleOffset = 10;
 
@@ -87,11 +84,6 @@ Future<T?> showCupertinoModalBottomSheet<T>({
   Color? transitionBackgroundColor,
   BoxShadow? shadow,
 }) async {
-  assert(context != null);
-  assert(builder != null);
-  assert(expand != null);
-  assert(useRootNavigator != null);
-  assert(enableDrag != null);
   assert(debugCheckHasMediaQuery(context));
   final hasMaterialLocalizations = Localizations.of<MaterialLocalizations>(context, MaterialLocalizations) != null;
   final barrierLabel = hasMaterialLocalizations ? MaterialLocalizations.of(context).modalBarrierDismissLabel : '';
@@ -159,10 +151,7 @@ class CupertinoModalBottomSheetRoute<T> extends ModalBottomSheetRoute<T> {
     this.transitionBackgroundColor,
     this.topRadius = _kDefaultTopRadius,
     this.previousRouteAnimationCurve,
-  })  : assert(expanded != null),
-        assert(isDismissible != null),
-        assert(enableDrag != null),
-        super(
+  }) : super(
           closeProgressThreshold: closeProgressThreshold,
           scrollController: scrollController,
           containerBuilder: containerBuilder,
@@ -340,11 +329,6 @@ class CupertinoScaffold extends StatefulWidget {
     RouteSettings? settings,
     BoxShadow? shadow,
   }) async {
-    assert(context != null);
-    assert(builder != null);
-    assert(expand != null);
-    assert(useRootNavigator != null);
-    assert(enableDrag != null);
     assert(debugCheckHasMediaQuery(context));
     final isCupertinoApp = context.findAncestorWidgetOfExactType<CupertinoApp>() != null;
     var barrierLabel = '';
